@@ -23,6 +23,8 @@ public class Review01 {
 
         int table[][]= new int[10][3];
 
+        int tableFill = 1;
+
         numberOfBottles = 24;
         cost = 4.5;
         name = "Selection Natural Spring Water";
@@ -37,8 +39,11 @@ public class Review01 {
             costPerBottle[j] = Double.parseDouble(decimalFormat.format((j+1)*(cost/numberOfBottles)));
         }
 
-        for (int j = 0; j < 29; j++) { //Could also be a while loop
-            costPerBottle[j] = j+1;
+        for (int j = 0; j < 10; j++) {
+            for (int k = 0; k < 3; k++) {
+                table[j][k] = tableFill;
+                tableFill++;
+            }
         }
     }
 }
