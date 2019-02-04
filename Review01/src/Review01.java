@@ -37,6 +37,8 @@ public class Review01 {
             costPerBottle[j] = Double.parseDouble(decimalFormat.format((j+1)*(cost/numberOfBottles)));
         }
 
-
+        for (int j = 0; j < 29; j++) { //Could also be a while loop
+            costPerBottle[j] = j+1;
+        }
     }
 }
