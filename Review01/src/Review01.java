@@ -21,7 +21,7 @@ public class Review01 {
 
         double[] costPerBottle = new double[100];
 
-        int table[][]= new int[10][3];
+        int table[][]= new int[10][3]; //2d array with 3 collums and 10 rows
 
         int tableFill = 1;
 
@@ -39,7 +39,7 @@ public class Review01 {
             costPerBottle[j] = Double.parseDouble(decimalFormat.format((j+1)*(cost/numberOfBottles)));
         }
 
-        for (int j = 0; j < 10; j++) {
+        for (int j = 0; j < 10; j++) { //Populates 2d array
             for (int k = 0; k < 3; k++) {
                 table[j][k] = tableFill;
                 tableFill++;
