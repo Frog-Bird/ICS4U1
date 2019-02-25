@@ -13,7 +13,7 @@
 
     Sub Window_onLoad
 	
-        window.resizeTo 600,315
+        window.resizeTo 500,350
 
     End Sub 
 
@@ -28,6 +28,8 @@
 <INPUT TYPE="Button" NAME="commit" VALUE="Commit With Default Message">
 <br>
 <INPUT TYPE="Button" NAME="commitTwo" VALUE="Commit With Custom Message">
+<br>
+<INPUT TYPE="Button" NAME="push" VALUE="Push">
 <br>
 <INPUT TYPE="Button" NAME="pull" VALUE="Pull">
 <br>
@@ -51,6 +53,11 @@
       <SCRIPT FOR="commitTwo" EVENT="onClick" LANGUAGE="VBScript">
         Set WshShell = CreateObject("WScript.Shell")
         WshShell.Run "Octo\commitTwo.bat"
+      </SCRIPT>
+
+      <SCRIPT FOR="push" EVENT="onClick" LANGUAGE="VBScript">
+        Set WshShell = CreateObject("WScript.Shell")
+        WshShell.Run "Octo\push.bat"
       </SCRIPT>
 
       <SCRIPT FOR="pull" EVENT="onClick" LANGUAGE="VBScript">
