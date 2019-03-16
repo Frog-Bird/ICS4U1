@@ -1,10 +1,10 @@
 package Methods02;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class ExamScores {
     private static ArrayList<String> answers = new ArrayList<>();
@@ -30,7 +30,7 @@ public class ExamScores {
     private static int nine;
     private static int ten;
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
         readFile();
         checkAnswers();
         gradeScores();
@@ -38,9 +38,30 @@ public class ExamScores {
         statistics();
     }
 
-    private static void readFile() throws FileNotFoundException {
+    private static void readFile() throws IOException {
+        FileReader file = new FileReader("C:/Users/aavin/Desktop/ICS4U1/Methods02/text files/ExamDataFile.txt");
+        FileWriter filew = new FileWriter("C:/Users/aavin/Desktop/ICS4U1/Methods02/text files/ExamDataFile.txt");
         File text = new File("C:/Users/aavin/Desktop/ICS4U1/Methods02/text files/ExamDataFile.txt");
         Scanner scanner = new Scanner(text);
+        BufferedReader reader = new BufferedReader(file);
+        BufferedWriter writer = new BufferedWriter(filew);
+
+        reader.lines().forEach((s -> {
+            Stream.of(s.split(",")).map(Double::parseDouble).forEach(x-> {
+                try {
+                    writer.write(x + ",");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        writer.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            }));
+
         while(scanner.hasNextLine()) {
             String line = scanner.nextLine();
             String[] data = line.split(" ");
