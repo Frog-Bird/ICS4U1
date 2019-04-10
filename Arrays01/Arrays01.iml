@@ -7,5 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="poi-4.0" level="project" />
+    <orderEntry type="library" exported="" name="ooxml-lib" level="project" />
   </component>
 </module>

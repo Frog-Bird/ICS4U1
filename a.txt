@@ -1,0 +1,50 @@
+InputStream inp = new FileInputStream("wb.xls");
+        Workbook wb = WorkbookFactory.create(inp);
+        ArrayList<String> data = new ArrayList<>();
+        String sheetName = null;
+        int month;
+        int productNumber;
+        String profit;
+//        int[] run = {1};
+        String[] a = {"", "", "", "", "PR121", "PR122", "PR123", "PR124", "PR231", "PR331", "PR441", "PR511", "PR512", "PR513", "PR661", "PR701", "PR811"};
+        String[] b;
+        File file = new File("C:/Users/aavin/Desktop/ICS4U1/Arrays01/textfiles/Project02Data.txt");
+        Scanner scanner = new Scanner(file);
+
+        month = 0;
+        productNumber = 0;
+        profit = "0";
+
+        while (scanner.hasNextLine()) {
+            data.add(scanner.nextLine());
+        }
+
+        for (int j = 0; j < data.size(); j++) {
+            b = data.get(j).split(",");
+            for (int i = 0; i < b.length; i++) {
+                if (i == 0) {
+                    System.out.println(b[i]);
+                    sheetName = "Store" + b[i];
+                } else if (i == 1) {
+                    month = ((b[i].charAt(5) * 10) + b[i].charAt(6));
+                } else if (i == 2) {
+                    productNumber = Arrays.asList(a).indexOf(b[i]);
+                } else if (i == 3) {
+                    profit = b[i];
+                }
+            }
+            double temp;
+            Sheet sheet = (Sheet) wb.getSheetAt(1);
+            sheet.
+            Row row = sheet.getRow(2);
+            Cell cell = row.getCell(3);
+            String cellContents = cell.getStringCellValue();
+            temp = Double.parseDouble(profit) + Double.parseDouble(cellContents);
+            profit = String.valueOf(temp);
+
+            cell.setCellValue(cellContents);
+            Arrays.fill(b, null);
+        }
+        FileOutputStream fileOut = new FileOutputStream("wb.xls");
+        wb.write(fileOut);
+        fileOut.close();

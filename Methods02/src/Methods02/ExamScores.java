@@ -46,21 +46,19 @@ public class ExamScores {
         BufferedReader reader = new BufferedReader(file);
         BufferedWriter writer = new BufferedWriter(filew);
 
-        reader.lines().forEach((s -> {
-            Stream.of(s.split(",")).map(Double::parseDouble).forEach(x-> {
+        reader.lines().forEach((s -> Stream.of(s.split(",")).map(Double::parseDouble).forEach(x-> {
+            try {
+                writer.write(x + ",");
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
                 try {
-                    writer.write(x + ",");
+                    writer.close();
                 } catch (IOException e) {
                     e.printStackTrace();
-                } finally {
-                    try {
-                        writer.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
                 }
-            });
-            }));
+            }
+        })));
 
         while(scanner.hasNextLine()) {
             String line = scanner.nextLine();

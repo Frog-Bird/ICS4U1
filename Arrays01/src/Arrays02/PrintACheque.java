@@ -27,7 +27,7 @@ public class PrintACheque
         String[] ones = new String[]{"", "one", "two", "three", "four", "five", "six" ,"seven", "eight", "nine", "ten", "eleven",
                 "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
         String[] tens = new String[]{"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
-        String[] hundereds = new String[]{"", "one hundred", "two hundred", "three hundred", "four hundred",
+        String[] hundreds = new String[]{"", "one hundred", "two hundred", "three hundred", "four hundred",
                 "five hundred", "six hundred" ,"seven hundred", "eight hundred", "nine hundred"};
 
         double dChqAmount;
@@ -78,7 +78,7 @@ public class PrintACheque
                 iHundreds  = iBlockOf3 / 100;
 
                 // Handle the Hundreds
-                sSectionPhrase += hundereds[iHundreds];
+                sSectionPhrase += hundreds[iHundreds];
 
                 // Handle the Tens
                 if (iTens >= 20)
